@@ -72,7 +72,7 @@ docker run -e VAR_VAR=123455                                            - run wi
 docker volume create <NEW VOLUME>                                       -create volume in /var/lib/docker/volumes
 docker volume rm <VOLUME NAME>                                          -delete volume in docker
 
-                           docker run --rm -v data:/usr/tests/allureResults IMAGE
+                           docker run --rm -v data:/usr/tests/AllureReport IMAGE
 
 netstat -a                                                              -running ports
 docker network ls                                                       -types of networks
@@ -104,7 +104,7 @@ docker compose up (-d)
 3) Install Docker and Git
 4) Install SSH
 5) Deactivate sleep. target
-6) Ask DevOps make static IP for host machine
-7) Create #External switch in Hyper-V
-
+6) Create #External switch in Hyper-V
+7) Ask DevOps make static IP for host machine (described at note)
+8) Create Sharing Folder, mount....
 
