@@ -4,9 +4,9 @@ import Models as Ms
 
 
 @pytest.mark.incremental
+@pytest.mark.full_scenery
 class TestGenOpt:
 
-    @pytest.mark.full_scenery
     def test_create_model_group(self, client):
         """
         Create group of models with GraphQL endpoint
@@ -15,7 +15,6 @@ class TestGenOpt:
         response = client.post_gql_request(query=request.query, variables=request.variables)
         response.assert_status_code(200).validate(Ms.GroupOfModelResponse)
 
-    @pytest.mark.full_scenery
     def test_create_models(self, client):
         for model in client.group.MODEL.__dict__.values():
             request = Ms.ModelRequest(model, client.group)
@@ -31,7 +30,6 @@ class TestGenOpt:
             # only check these if the above passed
             raise AssertionError
 
-    @pytest.mark.full_scenery
     def test_upload_tr(self, client):
         request = Ms.UploadTRRequest(client.group)
         file = open("05_Ц1_ТР_НЕФТЯНЫХ_НА_МАЙ_2023г без пароля [N92oDN].xlsx", "rb")
