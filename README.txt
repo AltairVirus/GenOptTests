@@ -90,6 +90,8 @@ docker network connect <NAMES>/<NETWORK ID>  <NAMES>/<CONTAINER ID>     -connect
                                         # CI / CD
 
 docker compose up (-d)
+chown -R :gitlab-runner allaccess - назначить владельца файла
+chmod 777 allaccess/scripts/ - дать всем права на файл
 
 
 
