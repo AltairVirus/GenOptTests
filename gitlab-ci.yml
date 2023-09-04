@@ -1,0 +1,36 @@
+stages:
+    - build
+    - test
+    - report
+
+build image:
+    stage: build
+    script:
+        - docker build -t image-test:$CI_COMMIT_SHORT_SHA . 
+#--no-cache=True .
+
+test run:
+    stage: test
+    needs: 
+        - build image
+    script:
+        - rm -rf /samba/allaccess/allure-result/*
+        - docker run --name test 
+                     --rm
+                     -e BASE_URL=$BASE_URL
+                     -v /samba/allaccess/allure-result:/usr/tests/AllureResult 
+                     image-test:$CI_COMMIT_SHORT_SHA
+    after_script:
+        - docker rmi image-test:$CI_COMMIT_SHORT_SHA
+    allow_failure: true
+
+
+create report:
+    stage: report
+    before_script:
+        - apk update && apk add curl curl-dev bash
+    needs: 
+        - test run   
+    script:
+        - sleep 20
+        - curl "http://100.111.13.215:5050/generate-report"
