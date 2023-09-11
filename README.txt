@@ -30,8 +30,8 @@ DOCKER:
 2) docker build -t "repository":"imagename" --no-cache=True .
 3) docker tag "imageid" altairvirus/nntc_1:"imagename"
 4) docker login
-    #altairvirus
-    #Hizmetlik1
+    #aaasssssdf
+    #Hiddjdkdk1
 5) docker push altairvirus/nntc_1:"imagename"
 
 
